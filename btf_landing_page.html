@@ -1,0 +1,1355 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>BTF Ultrasonic Duo — 피부 주권을 되찾는 유일한 선택</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Noto+Serif+KR:wght@300;400;600&family=Noto+Sans+KR:wght@300;400;500&family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #0B0B09;
+    --bg2: #131310;
+    --bg3: #1C1C18;
+    --surface: #222220;
+    --gold: #C9A96E;
+    --gold-light: #E0C898;
+    --gold-dim: #8A7250;
+    --cream: #F2EDE4;
+    --cream-dim: #B8B0A0;
+    --muted: #6A6660;
+    --line: rgba(201,169,110,0.18);
+    --white: #FAFAF8;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--bg);
+    color: var(--cream);
+    font-family: 'Noto Serif KR', 'Noto Sans KR', serif;
+    font-weight: 300;
+    line-height: 1.7;
+    overflow-x: hidden;
+  }
+
+  /* ── NAV ── */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    padding: 20px 40px;
+    display: flex; justify-content: space-between; align-items: center;
+    background: linear-gradient(to bottom, rgba(11,11,9,0.95), transparent);
+    backdrop-filter: blur(2px);
+  }
+  .nav-logo {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 18px; font-weight: 600; letter-spacing: 0.25em;
+    color: var(--gold); text-decoration: none;
+  }
+  .nav-cta {
+    background: var(--gold);
+    color: var(--bg);
+    font-family: 'Montserrat', sans-serif;
+    font-size: 12px; font-weight: 600; letter-spacing: 0.15em;
+    padding: 10px 24px;
+    border: none; cursor: pointer; text-decoration: none;
+    transition: background 0.3s, transform 0.2s;
+  }
+  .nav-cta:hover { background: var(--gold-light); transform: translateY(-1px); }
+
+  /* ── HERO ── */
+  .hero {
+    min-height: 100vh;
+    display: flex; flex-direction: column; justify-content: center;
+    position: relative;
+    padding: 120px 40px 80px;
+    overflow: hidden;
+  }
+  .hero::before {
+    content: '';
+    position: absolute; inset: 0;
+    background:
+      radial-gradient(ellipse 60% 50% at 70% 50%, rgba(201,169,110,0.07) 0%, transparent 70%),
+      radial-gradient(ellipse 40% 80% at 10% 30%, rgba(201,169,110,0.04) 0%, transparent 60%);
+  }
+  .hero-badge {
+    display: inline-flex; align-items: center; gap: 8px;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 10px; font-weight: 500; letter-spacing: 0.3em;
+    color: var(--gold); text-transform: uppercase;
+    padding: 6px 16px; border: 1px solid var(--line);
+    margin-bottom: 40px; width: fit-content;
+    animation: fadeInUp 0.8s ease both;
+  }
+  .hero-badge::before {
+    content: ''; width: 20px; height: 1px; background: var(--gold);
+  }
+  .hero-eyebrow {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 11px; font-weight: 400; letter-spacing: 0.3em;
+    color: var(--gold-dim); text-transform: uppercase;
+    margin-bottom: 20px;
+    animation: fadeInUp 0.8s 0.1s ease both;
+  }
+  .hero-headline {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(44px, 6vw, 80px);
+    font-weight: 300; line-height: 1.15;
+    color: var(--cream);
+    max-width: 800px;
+    margin-bottom: 8px;
+    animation: fadeInUp 0.9s 0.2s ease both;
+  }
+  .hero-headline em {
+    font-style: italic; color: var(--gold);
+  }
+  .hero-subline {
+    font-family: 'Noto Serif KR', serif;
+    font-size: clamp(15px, 1.8vw, 20px);
+    font-weight: 300; color: var(--cream-dim);
+    max-width: 560px; margin: 24px 0 48px;
+    animation: fadeInUp 0.9s 0.35s ease both;
+  }
+  .hero-actions {
+    display: flex; align-items: center; gap: 24px; flex-wrap: wrap;
+    animation: fadeInUp 0.9s 0.5s ease both;
+  }
+  .btn-primary {
+    display: inline-flex; align-items: center; gap: 12px;
+    background: var(--gold); color: var(--bg);
+    font-family: 'Montserrat', sans-serif;
+    font-size: 13px; font-weight: 600; letter-spacing: 0.12em;
+    padding: 18px 40px; text-decoration: none; border: none; cursor: pointer;
+    transition: all 0.3s;
+  }
+  .btn-primary:hover { background: var(--gold-light); transform: translateY(-2px); box-shadow: 0 12px 40px rgba(201,169,110,0.3); }
+  .btn-primary svg { transition: transform 0.3s; }
+  .btn-primary:hover svg { transform: translateX(4px); }
+  .btn-secondary {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 12px; font-weight: 400; letter-spacing: 0.15em;
+    color: var(--cream-dim); text-decoration: none;
+    padding-bottom: 2px; border-bottom: 1px solid var(--muted);
+    transition: color 0.3s, border-color 0.3s;
+  }
+  .btn-secondary:hover { color: var(--gold); border-color: var(--gold); }
+
+  .hero-proof-strip {
+    display: flex; gap: 40px; margin-top: 80px; flex-wrap: wrap;
+    animation: fadeInUp 0.9s 0.65s ease both;
+  }
+  .proof-item { display: flex; flex-direction: column; }
+  .proof-num {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 44px; font-weight: 300; color: var(--gold);
+    line-height: 1;
+  }
+  .proof-label {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 10px; letter-spacing: 0.2em; color: var(--muted);
+    margin-top: 4px;
+  }
+  .proof-divider {
+    width: 1px; background: var(--line); align-self: stretch;
+  }
+
+  /* ── MARQUEE ── */
+  .marquee-bar {
+    overflow: hidden;
+    border-top: 1px solid var(--line);
+    border-bottom: 1px solid var(--line);
+    padding: 14px 0;
+    background: var(--bg2);
+  }
+  .marquee-track {
+    display: flex; gap: 0; white-space: nowrap;
+    animation: marquee 24s linear infinite;
+  }
+  .marquee-track span {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 10px; letter-spacing: 0.3em; text-transform: uppercase;
+    color: var(--gold-dim); padding: 0 32px;
+  }
+  .marquee-track span.accent { color: var(--gold); }
+
+  /* ── SECTION COMMONS ── */
+  section { padding: 100px 40px; }
+  .section-label {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 10px; letter-spacing: 0.35em; text-transform: uppercase;
+    color: var(--gold); margin-bottom: 20px;
+  }
+  .section-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(32px, 4vw, 54px); font-weight: 300;
+    color: var(--cream); line-height: 1.2;
+  }
+  .section-title em { font-style: italic; color: var(--gold); }
+  .gold-line {
+    width: 40px; height: 1px; background: var(--gold); margin: 28px 0;
+  }
+  .container { max-width: 1100px; margin: 0 auto; }
+
+  /* ── PAIN SECTION ── */
+  .pain-section { background: var(--bg2); }
+  .pain-grid {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 80px;
+    align-items: center; max-width: 1100px; margin: 0 auto;
+  }
+  .pain-copy p {
+    font-size: 16px; color: var(--cream-dim); line-height: 1.9;
+    margin-bottom: 20px;
+  }
+  .pain-copy strong { color: var(--cream); font-weight: 400; }
+  .pain-cards { display: flex; flex-direction: column; gap: 16px; }
+  .pain-card {
+    background: var(--bg3); border: 1px solid var(--line);
+    padding: 24px 28px;
+    display: flex; gap: 20px; align-items: flex-start;
+    transition: border-color 0.3s;
+  }
+  .pain-card:hover { border-color: var(--gold-dim); }
+  .pain-icon {
+    width: 40px; height: 40px; flex-shrink: 0;
+    border: 1px solid var(--gold-dim);
+    display: flex; align-items: center; justify-content: center;
+    color: var(--gold); font-size: 16px;
+  }
+  .pain-card-title {
+    font-family: 'Noto Serif KR', serif;
+    font-size: 14px; font-weight: 400; color: var(--cream); margin-bottom: 6px;
+  }
+  .pain-card-desc {
+    font-size: 13px; color: var(--muted); line-height: 1.7;
+  }
+
+  /* ── CLINICAL PROOF ── */
+  .proof-section { background: var(--bg); text-align: center; }
+  .proof-grid {
+    display: grid; grid-template-columns: repeat(3, 1fr);
+    gap: 2px; margin: 60px auto 0; max-width: 900px;
+  }
+  .proof-block {
+    background: var(--bg3);
+    padding: 48px 32px;
+    position: relative; overflow: hidden;
+  }
+  .proof-block::after {
+    content: ''; position: absolute; bottom: 0; left: 0; right: 0;
+    height: 2px; background: linear-gradient(90deg, transparent, var(--gold), transparent);
+    transform: scaleX(0); transition: transform 0.5s;
+  }
+  .proof-block:hover::after { transform: scaleX(1); }
+  .proof-big {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 64px; font-weight: 300; color: var(--gold); line-height: 1;
+    display: block;
+  }
+  .proof-caption {
+    font-family: 'Noto Serif KR', serif;
+    font-size: 14px; color: var(--cream); margin-top: 12px;
+  }
+  .proof-sub {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 10px; letter-spacing: 0.2em; color: var(--muted); margin-top: 8px;
+  }
+  .proof-disclaimer {
+    font-size: 11px; color: var(--muted); margin-top: 32px; max-width: 600px; margin-left: auto; margin-right: auto;
+  }
+
+  /* ── TECHNOLOGY ── */
+  .tech-section { background: var(--bg2); }
+  .tech-intro { max-width: 700px; margin-bottom: 64px; }
+  .tech-tabs {
+    display: flex; gap: 0; border: 1px solid var(--line); width: fit-content; margin-bottom: 48px;
+  }
+  .tech-tab {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase;
+    padding: 12px 32px; cursor: pointer; background: none; border: none;
+    color: var(--muted); transition: all 0.3s;
+  }
+  .tech-tab.active { background: var(--gold); color: var(--bg); }
+  .tech-content { display: none; animation: fadeInUp 0.4s ease both; }
+  .tech-content.active { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: start; }
+  .tech-visual {
+    background: var(--bg3); border: 1px solid var(--line);
+    aspect-ratio: 4/3; display: flex; align-items: center; justify-content: center;
+    position: relative; overflow: hidden;
+  }
+  .tech-diagram {
+    width: 100%; height: 100%; display: flex; align-items: center; justify-content: center;
+    flex-direction: column; gap: 8px; padding: 32px;
+  }
+  /* HIFU diagram */
+  .skin-layers {
+    width: 100%; display: flex; flex-direction: column; gap: 0;
+  }
+  .skin-layer {
+    height: 36px; display: flex; align-items: center; justify-content: center;
+    font-family: 'Montserrat', sans-serif; font-size: 9px; letter-spacing: 0.15em;
+    text-transform: uppercase; color: var(--muted); position: relative; overflow: hidden;
+  }
+  .skin-layer.epidermis { background: rgba(201,169,110,0.12); color: var(--gold-dim); }
+  .skin-layer.dermis { background: rgba(201,169,110,0.08); height: 50px; }
+  .skin-layer.deep { background: rgba(201,169,110,0.05); height: 64px; color: var(--gold); }
+  .skin-layer.smas { background: rgba(201,169,110,0.15); height: 40px; color: var(--gold); }
+  .focus-point {
+    position: absolute; right: 30%; top: 50%; transform: translateY(-50%);
+    width: 8px; height: 8px; background: var(--gold);
+    border-radius: 50%; box-shadow: 0 0 16px rgba(201,169,110,0.8);
+    animation: pulse 2s ease-in-out infinite;
+  }
+  /* SDM wave diagram */
+  .wave-container {
+    width: 100%; height: 200px; position: relative; overflow: hidden;
+  }
+  .wave-line {
+    position: absolute; width: 100%; height: 1px;
+    background: linear-gradient(90deg, transparent 0%, var(--gold) 50%, transparent 100%);
+    animation: waveAnim 3s ease-in-out infinite;
+  }
+  .wave-line:nth-child(1) { top: 30%; animation-delay: 0s; opacity: 0.4; }
+  .wave-line:nth-child(2) { top: 45%; animation-delay: 0.3s; opacity: 0.7; height: 2px; }
+  .wave-line:nth-child(3) { top: 55%; animation-delay: 0.6s; opacity: 0.5; }
+  .wave-label {
+    position: absolute; font-family: 'Montserrat', sans-serif;
+    font-size: 10px; color: var(--gold); letter-spacing: 0.15em;
+  }
+  .tech-detail-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 32px; font-weight: 300; color: var(--cream); margin-bottom: 16px;
+  }
+  .tech-detail-desc {
+    font-size: 15px; color: var(--cream-dim); line-height: 1.85; margin-bottom: 28px;
+  }
+  .tech-specs { display: flex; flex-direction: column; gap: 12px; }
+  .spec-row {
+    display: flex; align-items: center; gap: 16px;
+    padding: 12px 0; border-bottom: 1px solid rgba(255,255,255,0.05);
+  }
+  .spec-key {
+    font-family: 'Montserrat', sans-serif; font-size: 9px; letter-spacing: 0.2em;
+    text-transform: uppercase; color: var(--muted); min-width: 120px;
+  }
+  .spec-val { font-size: 14px; color: var(--cream-dim); }
+  .spec-val strong { color: var(--gold); font-weight: 400; }
+
+  /* ── DIFFERENTIATORS ── */
+  .diff-section { background: var(--bg); }
+  .diff-grid {
+    display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px;
+    margin-top: 60px; background: var(--line);
+  }
+  .diff-card {
+    background: var(--bg); padding: 40px 28px;
+    display: flex; flex-direction: column; gap: 16px;
+    transition: background 0.3s;
+  }
+  .diff-card:hover { background: var(--bg3); }
+  .diff-num {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 52px; font-weight: 300; color: var(--line);
+    line-height: 1;
+  }
+  .diff-icon { color: var(--gold); font-size: 22px; }
+  .diff-title {
+    font-family: 'Noto Serif KR', serif; font-size: 16px;
+    color: var(--cream); font-weight: 400;
+  }
+  .diff-desc { font-size: 13px; color: var(--muted); line-height: 1.75; }
+  .diff-highlight { color: var(--gold); font-size: 12px; margin-top: 4px; font-family: 'Montserrat', sans-serif; letter-spacing: 0.1em; }
+
+  /* ── HOW IT WORKS ── */
+  .how-section { background: var(--bg2); }
+  .steps-grid {
+    display: grid; grid-template-columns: repeat(4, 1fr); gap: 0;
+    margin-top: 60px; position: relative;
+  }
+  .steps-grid::before {
+    content: ''; position: absolute; top: 28px; left: 12%; right: 12%; height: 1px;
+    background: linear-gradient(90deg, transparent, var(--gold-dim) 20%, var(--gold-dim) 80%, transparent);
+  }
+  .step {
+    padding: 0 20px; text-align: center;
+    display: flex; flex-direction: column; align-items: center; gap: 16px;
+  }
+  .step-num {
+    width: 56px; height: 56px; border: 1px solid var(--gold);
+    display: flex; align-items: center; justify-content: center;
+    font-family: 'Cormorant Garamond', serif; font-size: 22px;
+    color: var(--gold); background: var(--bg2); position: relative; z-index: 1;
+  }
+  .step-title { font-family: 'Noto Serif KR', serif; font-size: 15px; color: var(--cream); font-weight: 400; }
+  .step-desc { font-size: 13px; color: var(--muted); line-height: 1.7; }
+
+  /* ── COMPARE ── */
+  .compare-section { background: var(--bg); }
+  .compare-table {
+    width: 100%; max-width: 900px; margin: 60px auto 0;
+    border-collapse: collapse;
+  }
+  .compare-table th {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase;
+    padding: 16px 24px; text-align: center; border-bottom: 1px solid var(--line);
+  }
+  .compare-table th:nth-child(2) { color: var(--gold); background: rgba(201,169,110,0.06); }
+  .compare-table th:first-child { text-align: left; color: var(--muted); }
+  .compare-table td {
+    padding: 18px 24px; text-align: center; border-bottom: 1px solid rgba(255,255,255,0.04);
+    font-size: 14px; color: var(--cream-dim);
+  }
+  .compare-table td:first-child { text-align: left; color: var(--muted); font-size: 13px; }
+  .compare-table td:nth-child(2) { background: rgba(201,169,110,0.04); color: var(--cream); }
+  .check { color: var(--gold); }
+  .cross { color: var(--muted); opacity: 0.4; }
+
+  /* ── PRICE ── */
+  .price-section { background: var(--bg2); text-align: center; }
+  .price-anchor {
+    display: flex; justify-content: center; gap: 60px; margin: 60px auto; flex-wrap: wrap;
+    max-width: 800px;
+  }
+  .price-box {
+    flex: 1; min-width: 200px;
+    border: 1px solid var(--line); padding: 40px 32px;
+    display: flex; flex-direction: column; align-items: center; gap: 12px;
+    position: relative;
+  }
+  .price-box.featured {
+    border-color: var(--gold);
+    background: linear-gradient(135deg, rgba(201,169,110,0.08), transparent);
+  }
+  .price-box.featured::before {
+    content: 'RECOMMENDED';
+    position: absolute; top: -12px;
+    font-family: 'Montserrat', sans-serif; font-size: 9px; letter-spacing: 0.25em;
+    background: var(--gold); color: var(--bg); padding: 4px 16px;
+  }
+  .price-type {
+    font-family: 'Montserrat', sans-serif; font-size: 10px;
+    letter-spacing: 0.25em; text-transform: uppercase; color: var(--muted);
+  }
+  .price-amount {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 40px; font-weight: 300; color: var(--cream); line-height: 1;
+  }
+  .price-amount small { font-size: 18px; color: var(--muted); }
+  .price-sub { font-size: 12px; color: var(--muted); }
+  .price-cta-wrap { margin-top: 48px; }
+  .price-note {
+    font-size: 12px; color: var(--muted); margin-top: 20px; line-height: 1.7;
+  }
+  .cert-badge {
+    display: inline-flex; align-items: center; gap: 8px;
+    border: 1px solid var(--line); padding: 8px 20px;
+    font-family: 'Montserrat', sans-serif; font-size: 10px;
+    letter-spacing: 0.2em; color: var(--muted); margin-top: 40px;
+  }
+  .cert-badge span { color: var(--gold); }
+
+  /* ── FAQ ── */
+  .faq-section { background: var(--bg); }
+  .faq-list { max-width: 720px; margin: 60px auto 0; }
+  .faq-item { border-bottom: 1px solid var(--line); }
+  .faq-question {
+    width: 100%; background: none; border: none; cursor: pointer;
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 24px 0; text-align: left;
+    font-family: 'Noto Serif KR', serif; font-size: 15px;
+    color: var(--cream); font-weight: 400;
+  }
+  .faq-icon {
+    width: 24px; height: 24px; flex-shrink: 0; color: var(--gold);
+    font-size: 20px; line-height: 1; transition: transform 0.3s;
+  }
+  .faq-item.open .faq-icon { transform: rotate(45deg); }
+  .faq-answer {
+    max-height: 0; overflow: hidden; transition: max-height 0.4s ease;
+  }
+  .faq-answer-inner {
+    padding: 0 0 24px; font-size: 14px; color: var(--cream-dim); line-height: 1.85;
+  }
+  .faq-item.open .faq-answer { max-height: 300px; }
+
+  /* ── TESTIMONIAL ── */
+  .testimonial-section { background: var(--bg2); }
+  .testimonial-grid {
+    display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px;
+    margin-top: 60px;
+  }
+  .testimonial-card {
+    background: var(--bg3); border: 1px solid var(--line); padding: 32px;
+    position: relative; transition: border-color 0.3s;
+  }
+  .testimonial-card:hover { border-color: var(--gold-dim); }
+  .testimonial-stars { color: var(--gold); font-size: 13px; margin-bottom: 16px; letter-spacing: 2px; }
+  .testimonial-text {
+    font-family: 'Noto Serif KR', serif;
+    font-size: 14px; color: var(--cream-dim); line-height: 1.85;
+    margin-bottom: 20px;
+  }
+  .testimonial-text strong { color: var(--cream); font-weight: 400; }
+  .testimonial-author {
+    font-family: 'Montserrat', sans-serif; font-size: 10px;
+    letter-spacing: 0.2em; text-transform: uppercase; color: var(--muted);
+  }
+  .testimonial-tag {
+    display: inline-block; background: rgba(201,169,110,0.1);
+    color: var(--gold); font-size: 10px; padding: 3px 10px;
+    font-family: 'Montserrat', sans-serif; letter-spacing: 0.1em;
+    margin-bottom: 12px;
+  }
+
+  /* ── FINAL CTA ── */
+  .cta-section {
+    background: var(--bg);
+    text-align: center; padding: 120px 40px;
+    position: relative; overflow: hidden;
+  }
+  .cta-section::before {
+    content: '';
+    position: absolute; inset: 0;
+    background: radial-gradient(ellipse 80% 60% at 50% 100%, rgba(201,169,110,0.08), transparent);
+  }
+  .cta-eyebrow {
+    font-family: 'Cormorant Garamond', serif; font-style: italic;
+    font-size: 22px; color: var(--gold-dim); margin-bottom: 24px;
+  }
+  .cta-headline {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(36px, 5vw, 68px); font-weight: 300;
+    color: var(--cream); line-height: 1.2; margin-bottom: 20px;
+  }
+  .cta-headline em { color: var(--gold); font-style: italic; }
+  .cta-sub { font-size: 15px; color: var(--cream-dim); max-width: 480px; margin: 0 auto 48px; }
+  .cta-price-display {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 18px; color: var(--muted); margin-bottom: 32px; letter-spacing: 0.05em;
+  }
+  .cta-price-display strong { color: var(--cream); font-size: 28px; }
+  .cta-trust {
+    display: flex; justify-content: center; gap: 40px;
+    margin-top: 40px; flex-wrap: wrap;
+  }
+  .trust-item {
+    display: flex; align-items: center; gap: 8px;
+    font-family: 'Montserrat', sans-serif; font-size: 10px;
+    letter-spacing: 0.15em; text-transform: uppercase; color: var(--muted);
+  }
+  .trust-dot { width: 6px; height: 6px; background: var(--gold); border-radius: 50%; }
+
+  /* ── FOOTER ── */
+  footer {
+    background: var(--bg2);
+    padding: 60px 40px 40px;
+    border-top: 1px solid var(--line);
+  }
+  .footer-inner {
+    max-width: 1100px; margin: 0 auto;
+    display: flex; justify-content: space-between; align-items: flex-start;
+    gap: 40px; flex-wrap: wrap;
+  }
+  .footer-logo {
+    font-family: 'Montserrat', sans-serif; font-size: 20px;
+    font-weight: 600; letter-spacing: 0.3em; color: var(--gold);
+  }
+  .footer-tagline {
+    font-family: 'Cormorant Garamond', serif; font-style: italic;
+    font-size: 14px; color: var(--muted); margin-top: 8px;
+  }
+  .footer-info { font-size: 12px; color: var(--muted); line-height: 2; }
+  .footer-bottom {
+    max-width: 1100px; margin: 40px auto 0;
+    padding-top: 24px; border-top: 1px solid rgba(255,255,255,0.05);
+    font-size: 11px; color: var(--muted);
+    display: flex; justify-content: space-between; flex-wrap: wrap; gap: 16px;
+  }
+
+  /* ── STICKY MOBILE CTA ── */
+  .sticky-cta {
+    display: none;
+    position: fixed; bottom: 0; left: 0; right: 0; z-index: 99;
+    background: var(--bg2); border-top: 1px solid var(--line);
+    padding: 16px 20px;
+    justify-content: space-between; align-items: center;
+  }
+  .sticky-price {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 22px; color: var(--cream);
+  }
+  .sticky-btn {
+    background: var(--gold); color: var(--bg);
+    font-family: 'Montserrat', sans-serif; font-size: 11px;
+    font-weight: 600; letter-spacing: 0.15em;
+    padding: 14px 32px; border: none; cursor: pointer;
+    text-decoration: none;
+  }
+
+  /* ── ANIMATIONS ── */
+  @keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(24px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  @keyframes marquee {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+  }
+  @keyframes pulse {
+    0%, 100% { box-shadow: 0 0 6px rgba(201,169,110,0.6); }
+    50% { box-shadow: 0 0 20px rgba(201,169,110,0.9), 0 0 40px rgba(201,169,110,0.4); }
+  }
+  @keyframes waveAnim {
+    0%, 100% { transform: scaleX(0.8); opacity: 0.3; }
+    50% { transform: scaleX(1); opacity: 1; }
+  }
+  .reveal {
+    opacity: 0; transform: translateY(32px); transition: opacity 0.7s ease, transform 0.7s ease;
+  }
+  .reveal.visible { opacity: 1; transform: translateY(0); }
+  .reveal-delay-1 { transition-delay: 0.1s; }
+  .reveal-delay-2 { transition-delay: 0.2s; }
+  .reveal-delay-3 { transition-delay: 0.3s; }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 900px) {
+    nav { padding: 16px 20px; }
+    section { padding: 72px 24px; }
+    .hero { padding: 100px 24px 60px; }
+    .pain-grid, .tech-content.active { grid-template-columns: 1fr; gap: 40px; }
+    .diff-grid { grid-template-columns: repeat(2, 1fr); }
+    .steps-grid { grid-template-columns: repeat(2, 1fr); gap: 40px; }
+    .steps-grid::before { display: none; }
+    .proof-grid { grid-template-columns: 1fr; }
+    .testimonial-grid { grid-template-columns: 1fr; }
+    .compare-table { font-size: 12px; }
+    .compare-table th, .compare-table td { padding: 12px 12px; }
+    .sticky-cta { display: flex; }
+    .cta-section { padding: 80px 24px 120px; }
+    .price-anchor { flex-direction: column; }
+  }
+
+  @media (max-width: 600px) {
+    .hero-headline { font-size: 38px; }
+    .diff-grid { grid-template-columns: 1fr; }
+    .hero-proof-strip { gap: 24px; }
+    .proof-divider { display: none; }
+  }
+
+  /* scroll indicator */
+  .scroll-line {
+    position: absolute; bottom: 40px; left: 40px;
+    display: flex; flex-direction: column; align-items: center; gap: 8px;
+    animation: fadeInUp 1s 1s ease both;
+  }
+  .scroll-line::before {
+    content: 'SCROLL';
+    font-family: 'Montserrat', sans-serif; font-size: 9px;
+    letter-spacing: 0.3em; color: var(--muted);
+    writing-mode: vertical-rl;
+  }
+  .scroll-line::after {
+    content: ''; width: 1px; height: 60px;
+    background: linear-gradient(to bottom, var(--gold-dim), transparent);
+    animation: scrollPulse 2s ease-in-out infinite;
+  }
+  @keyframes scrollPulse {
+    0% { transform: scaleY(0); transform-origin: top; }
+    50% { transform: scaleY(1); transform-origin: top; }
+    51% { transform: scaleY(1); transform-origin: bottom; }
+    100% { transform: scaleY(0); transform-origin: bottom; }
+  }
+
+  /* number counter animation */
+  .count-up { display: inline; }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="#" class="nav-logo">BTF</a>
+  <a href="#purchase" class="nav-cta">구매하기</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="top">
+  <div class="hero-badge">Beauty That Fills · Ultrasonic Duo</div>
+  <p class="hero-eyebrow">클리닉의 효과, 이제 집에서 매일</p>
+  <h1 class="hero-headline">
+    피부과에서 나온 그 순간<br>
+    <em>왜 되돌아가는 걸까요.</em>
+  </h1>
+  <p class="hero-subline">
+    클리닉 방문 주기 사이의 공백—<br>
+    BTF Ultrasonic Duo가 그 공백을 채웁니다.<br>
+    매일 10분, 당신의 10년이 달라집니다.
+  </p>
+  <div class="hero-actions">
+    <a href="#purchase" class="btn-primary">
+      지금 구매하기
+      <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+        <path d="M3 8h10M8 3l5 5-5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+      </svg>
+    </a>
+    <a href="#technology" class="btn-secondary">기술 더 알아보기</a>
+  </div>
+  <div class="hero-proof-strip">
+    <div class="proof-item">
+      <span class="proof-num" data-target="31.13">0</span>
+      <span class="proof-label">탄력 개선율 %</span>
+    </div>
+    <div class="proof-divider"></div>
+    <div class="proof-item">
+      <span class="proof-num" data-target="37.18">0</span>
+      <span class="proof-label">광채 개선율 %</span>
+    </div>
+    <div class="proof-divider"></div>
+    <div class="proof-item">
+      <span class="proof-num">1회</span>
+      <span class="proof-label">인체적용시험 입증</span>
+    </div>
+    <div class="proof-divider"></div>
+    <div class="proof-item">
+      <span class="proof-num">CE</span>
+      <span class="proof-label">유럽 안전인증</span>
+    </div>
+  </div>
+  <div class="scroll-line"></div>
+</section>
+
+<!-- MARQUEE -->
+<div class="marquee-bar">
+  <div class="marquee-track">
+    <span>HIFU 고강도 집중초음파</span>
+    <span class="accent">·</span>
+    <span>SDM 물방울 초음파</span>
+    <span class="accent">·</span>
+    <span>3MHz + 10MHz + 16MHz 트리플 주파수</span>
+    <span class="accent">·</span>
+    <span>3.0mm + 4.5mm 듀얼 HIFU 동시 조사</span>
+    <span class="accent">·</span>
+    <span>카트리지 교체 불필요</span>
+    <span class="accent">·</span>
+    <span>CE 인증 (LR5001225061)</span>
+    <span class="accent">·</span>
+    <span>국내 자체 제조</span>
+    <span class="accent">·</span>
+    <span>HIFU 고강도 집중초음파</span>
+    <span class="accent">·</span>
+    <span>SDM 물방울 초음파</span>
+    <span class="accent">·</span>
+    <span>3MHz + 10MHz + 16MHz 트리플 주파수</span>
+    <span class="accent">·</span>
+    <span>3.0mm + 4.5mm 듀얼 HIFU 동시 조사</span>
+    <span class="accent">·</span>
+    <span>카트리지 교체 불필요</span>
+    <span class="accent">·</span>
+    <span>CE 인증 (LR5001225061)</span>
+    <span class="accent">·</span>
+    <span>국내 자체 제조</span>
+    <span class="accent">·</span>
+  </div>
+</div>
+
+<!-- PAIN SECTION -->
+<section class="pain-section" id="pain">
+  <div class="pain-grid">
+    <div class="pain-copy">
+      <div class="section-label reveal">The Problem</div>
+      <h2 class="section-title reveal reveal-delay-1">
+        클리닉은<br>정기권이 아닙니다
+      </h2>
+      <div class="gold-line reveal reveal-delay-1"></div>
+      <p class="reveal reveal-delay-2">
+        피부과 리프팅 시술을 받고 나오는 순간, 피부는 이미 <strong>회복 반응</strong>을 시작합니다. 
+        콜라겐 생성은 2~3개월 후 최고조에 달하지만, 일상으로 돌아오면 자외선, 스트레스, 수면 부족이 다시 그 효과를 갉아먹기 시작하죠.
+      </p>
+      <p class="reveal reveal-delay-2">
+        시술 간격인 6개월, 그 공백 동안 <strong>피부는 혼자 버텨야 합니다.</strong> 
+        비용도 문제입니다—1회 리프팅 시술에 50만~150만 원, 연 2~4회면 연간 최대 600만 원.
+      </p>
+      <p class="reveal reveal-delay-2">
+        BTF Ultrasonic Duo는 그 공백을 없애기 위해 설계되었습니다. <strong>클리닉 수준의 기술을, 매일.</strong>
+      </p>
+    </div>
+    <div class="pain-cards reveal reveal-delay-3">
+      <div class="pain-card">
+        <div class="pain-icon">↩</div>
+        <div>
+          <div class="pain-card-title">시술 후 되돌아오는 피부</div>
+          <div class="pain-card-desc">클리닉 효과는 일시적—관리의 연속성이 없으면 피부는 반드시 이전으로 회귀합니다.</div>
+        </div>
+      </div>
+      <div class="pain-card">
+        <div class="pain-icon">₩</div>
+        <div>
+          <div class="pain-card-title">끝없이 드는 시술 비용</div>
+          <div class="pain-card-desc">연간 수백만 원의 클리닉 비용 대비 BTF는 일회 투자로 매일 사용 가능합니다.</div>
+        </div>
+      </div>
+      <div class="pain-card">
+        <div class="pain-icon">⏱</div>
+        <div>
+          <div class="pain-card-title">예약, 이동, 시술 시간</div>
+          <div class="pain-card-desc">바쁜 일상에서 클리닉 방문 자체가 부담. 자택에서 매일 10분이면 충분합니다.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CLINICAL PROOF -->
+<section class="proof-section" id="proof">
+  <div class="container">
+    <div class="section-label reveal" style="display:inline-block">Clinical Evidence</div>
+    <h2 class="section-title reveal reveal-delay-1">
+      숫자가 말합니다.<br><em>1회 사용 후.</em>
+    </h2>
+    <div class="proof-grid reveal reveal-delay-2">
+      <div class="proof-block">
+        <span class="proof-big" data-target="31.13">31.13%</span>
+        <div class="proof-caption">피부 360° 탄력 개선</div>
+        <div class="proof-sub">SKIN ELASTICITY IMPROVEMENT</div>
+      </div>
+      <div class="proof-block">
+        <span class="proof-big" data-target="37.18">37.18%</span>
+        <div class="proof-caption">피부 광채(윤기) 개선</div>
+        <div class="proof-sub">SKIN RADIANCE IMPROVEMENT</div>
+      </div>
+      <div class="proof-block">
+        <span class="proof-big">1회</span>
+        <div class="proof-caption">단 1회 사용으로 입증된 효과</div>
+        <div class="proof-sub">PROVEN FROM FIRST USE</div>
+      </div>
+    </div>
+    <p class="proof-disclaimer reveal">
+      * 인체적용시험 결과 기준. 개인에 따라 효과 차이가 있을 수 있습니다. 본 제품은 의료기기가 아닙니다.
+    </p>
+  </div>
+</section>
+
+<!-- TECHNOLOGY -->
+<section class="tech-section" id="technology">
+  <div class="container">
+    <div class="tech-intro">
+      <div class="section-label reveal">Dual Technology</div>
+      <h2 class="section-title reveal reveal-delay-1">
+        하나의 디바이스,<br><em>두 가지 차원의 기술</em>
+      </h2>
+      <div class="gold-line reveal reveal-delay-1"></div>
+      <p class="reveal reveal-delay-2" style="font-size:15px;color:var(--cream-dim);line-height:1.85">
+        BTF Ultrasonic Duo는 서로 다른 층위에서 작용하는 두 가지 초음파 기술을 하나의 핸드피스에 구현합니다.
+        피부 표층부터 SMAS층까지—어떤 홈케어 디바이스도 시도하지 않은 깊이입니다.
+      </p>
+    </div>
+    <div class="tech-tabs reveal">
+      <button class="tech-tab active" onclick="switchTab('hifu')">HIFU</button>
+      <button class="tech-tab" onclick="switchTab('sdm')">SDM</button>
+    </div>
+    <div id="tab-hifu" class="tech-content active">
+      <div class="tech-visual">
+        <div class="tech-diagram">
+          <div style="font-family:Montserrat,sans-serif;font-size:9px;letter-spacing:0.2em;color:var(--gold);margin-bottom:12px;text-align:center">피부 단면도 — 초음파 조사 깊이</div>
+          <div class="skin-layers">
+            <div class="skin-layer epidermis">표피층 (EPIDERMIS)</div>
+            <div class="skin-layer dermis">진피층 3.0mm <div class="focus-point"></div></div>
+            <div class="skin-layer deep" style="position:relative">
+              심부 진피층 4.5mm
+              <div class="focus-point" style="right:45%"></div>
+            </div>
+            <div class="skin-layer smas">SMAS층 (안면 근막)</div>
+          </div>
+          <div style="font-family:Montserrat,sans-serif;font-size:9px;color:var(--gold-dim);margin-top:12px;text-align:center;letter-spacing:0.1em">
+            3.0mm + 4.5mm 동시 조사 · 카트리지 교체 불필요
+          </div>
+        </div>
+      </div>
+      <div>
+        <h3 class="tech-detail-title">HIFU<br>고강도 집중초음파</h3>
+        <p class="tech-detail-desc">
+          고강도 집중초음파(High Intensity Focused Ultrasound)를 피부 진피층(3.0mm)과 SMAS층(4.5mm)에 <strong style="color:var(--cream)">동시에</strong> 조사합니다. 
+          두 개의 깊이를 단일 패스로 처리해 시술 시간을 줄이고, 열 응고 지점에서 콜라겐 재생을 유도합니다.
+          <br><br>
+          클리닉용 장비 수준의 원리를 홈케어 환경에 최적화했습니다. 
+          <strong style="color:var(--gold)">카트리지 교체가 필요 없어</strong> 유지비용 0원.
+        </p>
+        <div class="tech-specs">
+          <div class="spec-row">
+            <span class="spec-key">조사 깊이</span>
+            <span class="spec-val"><strong>3.0mm + 4.5mm 동시</strong></span>
+          </div>
+          <div class="spec-row">
+            <span class="spec-key">작용 층위</span>
+            <span class="spec-val">진피층 + SMAS(안면 근막층)</span>
+          </div>
+          <div class="spec-row">
+            <span class="spec-key">카트리지</span>
+            <span class="spec-val"><strong>교체 불필요 (반영구)</strong></span>
+          </div>
+          <div class="spec-row">
+            <span class="spec-key">CE 인증</span>
+            <span class="spec-val">LR5001225061</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div id="tab-sdm" class="tech-content">
+      <div class="tech-visual">
+        <div class="tech-diagram">
+          <div style="font-family:Montserrat,sans-serif;font-size:9px;letter-spacing:0.2em;color:var(--gold);margin-bottom:16px;text-align:center">SDM 물방울 초음파 — 트리플 주파수</div>
+          <div style="display:flex;flex-direction:column;gap:12px;width:100%;padding:0 16px">
+            <div style="display:flex;align-items:center;gap:12px">
+              <span style="font-family:Montserrat,sans-serif;font-size:10px;color:var(--gold);min-width:36px">3MHz</span>
+              <div style="flex:1;height:3px;background:linear-gradient(90deg,var(--gold),rgba(201,169,110,0.3));animation:waveAnim 2s ease-in-out infinite"></div>
+              <span style="font-family:Montserrat,sans-serif;font-size:9px;color:var(--muted)">깊은 층</span>
+            </div>
+            <div style="display:flex;align-items:center;gap:12px">
+              <span style="font-family:Montserrat,sans-serif;font-size:10px;color:var(--gold);min-width:36px">10MHz</span>
+              <div style="flex:1;height:2px;background:linear-gradient(90deg,var(--gold-light),rgba(201,169,110,0.3));animation:waveAnim 2s 0.3s ease-in-out infinite"></div>
+              <span style="font-family:Montserrat,sans-serif;font-size:9px;color:var(--muted)">중간 층</span>
+            </div>
+            <div style="display:flex;align-items:center;gap:12px">
+              <span style="font-family:Montserrat,sans-serif;font-size:10px;color:var(--gold);min-width:36px">16MHz</span>
+              <div style="flex:1;height:1px;background:linear-gradient(90deg,var(--gold-dim),rgba(201,169,110,0.3));animation:waveAnim 2s 0.6s ease-in-out infinite"></div>
+              <span style="font-family:Montserrat,sans-serif;font-size:9px;color:var(--muted)">표층</span>
+            </div>
+          </div>
+          <div style="font-family:Montserrat,sans-serif;font-size:9px;color:var(--gold-dim);margin-top:16px;text-align:center;letter-spacing:0.1em">
+            3중 주파수 동시 출력 · 수분 침투 최적화
+          </div>
+        </div>
+      </div>
+      <div>
+        <h3 class="tech-detail-title">SDM<br>고밀도 물방울 초음파</h3>
+        <p class="tech-detail-desc">
+          SDM(Sonic Droplet Method)은 3MHz, 10MHz, 16MHz 3가지 주파수를 동시에 출력하는 4세대 초음파 기술입니다. 
+          물방울 형태의 초음파 에너지가 피부 표층부터 진피층까지 <strong style="color:var(--cream)">골고루 침투</strong>해 세포 대사를 활성화하고 유효 성분 흡수를 극대화합니다.
+          <br><br>
+          세안 후 스킨케어 루틴에 더하면, 일반 도포 대비 유효 성분 흡수율이 비약적으로 향상됩니다.
+        </p>
+        <div class="tech-specs">
+          <div class="spec-row">
+            <span class="spec-key">주파수</span>
+            <span class="spec-val"><strong>3MHz + 10MHz + 16MHz</strong></span>
+          </div>
+          <div class="spec-row">
+            <span class="spec-key">기술 세대</span>
+            <span class="spec-val">4세대 물방울 초음파 (SDM)</span>
+          </div>
+          <div class="spec-row">
+            <span class="spec-key">주요 효과</span>
+            <span class="spec-val">보습·탄력·유효성분 흡수율 향상</span>
+          </div>
+          <div class="spec-row">
+            <span class="spec-key">사용 시점</span>
+            <span class="spec-val">스킨케어 루틴 후 도포 중 사용</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- DIFFERENTIATORS -->
+<section class="diff-section" id="why">
+  <div class="container">
+    <div class="section-label reveal">Why BTF</div>
+    <h2 class="section-title reveal reveal-delay-1">
+      같은 초음파가 아닙니다.<br><em>비교할 수 없는 이유.</em>
+    </h2>
+    <div class="diff-grid reveal reveal-delay-2">
+      <div class="diff-card">
+        <div class="diff-num">01</div>
+        <div class="diff-title">카트리지 교체 0원</div>
+        <div class="diff-desc">경쟁사 제품은 6개월~1년마다 카트리지를 교체해야 합니다. BTF는 반영구 설계—추가 비용이 없습니다.</div>
+        <div class="diff-highlight">NO CARTRIDGE REPLACEMENT</div>
+      </div>
+      <div class="diff-card">
+        <div class="diff-num">02</div>
+        <div class="diff-title">듀얼 HIFU 동시 조사</div>
+        <div class="diff-desc">3.0mm + 4.5mm를 단 한 번의 패스로 동시에 처리합니다. 단일 깊이 제품 대비 2배의 커버리지.</div>
+        <div class="diff-highlight">DUAL DEPTH SIMULTANEOUS</div>
+      </div>
+      <div class="diff-card">
+        <div class="diff-num">03</div>
+        <div class="diff-title">트리플 주파수 SDM</div>
+        <div class="diff-desc">3+10+16MHz 세 가지 주파수를 동시 출력합니다. 단일 주파수 제품이 닿지 못하는 피부 전 층위에 작용합니다.</div>
+        <div class="diff-highlight">3+10+16MHz TRIPLE FREQ</div>
+      </div>
+      <div class="diff-card">
+        <div class="diff-num">04</div>
+        <div class="diff-title">CE 유럽 안전인증</div>
+        <div class="diff-desc">유럽연합 안전기준 CE 인증(LR5001225061) 획득. 국내 정밀 제조 공장에서 직접 생산됩니다.</div>
+        <div class="diff-highlight">CE CERTIFIED · MADE IN KOREA</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section class="how-section" id="howto">
+  <div class="container">
+    <div class="section-label reveal">Daily Ritual</div>
+    <h2 class="section-title reveal reveal-delay-1" style="text-align:center">
+      매일 <em>10분</em>의 루틴
+    </h2>
+    <div class="steps-grid reveal reveal-delay-2">
+      <div class="step">
+        <div class="step-num">01</div>
+        <div class="step-title">클렌징 완료 후</div>
+        <div class="step-desc">세안 후 피부가 촉촉한 상태에서 시작합니다. 수분이 초음파 전도를 돕습니다.</div>
+      </div>
+      <div class="step">
+        <div class="step-num">02</div>
+        <div class="step-title">SDM 모드 — 스킨케어 흡수</div>
+        <div class="step-desc">에센스·세럼 도포 후 SDM 초음파로 유효 성분 흡수를 극대화합니다. (3~5분)</div>
+      </div>
+      <div class="step">
+        <div class="step-num">03</div>
+        <div class="step-title">HIFU 모드 — 리프팅 케어</div>
+        <div class="step-desc">HIFU 핸드피스로 볼·턱라인·이마를 천천히 슬라이딩합니다. (5~7분)</div>
+      </div>
+      <div class="step">
+        <div class="step-num">04</div>
+        <div class="step-title">마무리 크림으로 잠금</div>
+        <div class="step-desc">보습 크림으로 마무리. 피부는 이미 집중 케어를 받은 상태입니다.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- COMPARE TABLE -->
+<section class="compare-section" id="compare">
+  <div class="container" style="text-align:center">
+    <div class="section-label reveal" style="display:inline-block">Comparison</div>
+    <h2 class="section-title reveal reveal-delay-1">
+      홈케어 리프팅 디바이스<br><em>직접 비교</em>
+    </h2>
+    <table class="compare-table reveal reveal-delay-2">
+      <thead>
+        <tr>
+          <th style="text-align:left">비교 항목</th>
+          <th>BTF Ultrasonic Duo</th>
+          <th>경쟁 A</th>
+          <th>경쟁 B</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>HIFU 조사 깊이</td>
+          <td><strong class="check">3.0 + 4.5mm 동시</strong></td>
+          <td>단일 깊이</td>
+          <td>단일 깊이</td>
+        </tr>
+        <tr>
+          <td>물방울 초음파 주파수</td>
+          <td><strong class="check">3+10+16MHz 트리플</strong></td>
+          <td class="cross">—</td>
+          <td>단일 주파수</td>
+        </tr>
+        <tr>
+          <td>카트리지 교체</td>
+          <td><span class="check">불필요 (반영구)</span></td>
+          <td>6~12개월마다 교체</td>
+          <td>교체 필요</td>
+        </tr>
+        <tr>
+          <td>CE 유럽 안전인증</td>
+          <td><span class="check">✓ 획득</span></td>
+          <td class="cross">미확인</td>
+          <td class="cross">미확인</td>
+        </tr>
+        <tr>
+          <td>인체적용시험</td>
+          <td><span class="check">탄력 +31% 광채 +37%</span></td>
+          <td class="cross">미공개</td>
+          <td class="cross">미공개</td>
+        </tr>
+        <tr>
+          <td>장기 총 비용</td>
+          <td><strong class="check">₩1,800,000 (추가 없음)</strong></td>
+          <td>본체 + 카트리지 누적</td>
+          <td>본체 + 카트리지 누적</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="testimonial-section" id="reviews">
+  <div class="container">
+    <div class="section-label reveal">Real Voices</div>
+    <h2 class="section-title reveal reveal-delay-1">
+      실제로 사용하는<br><em>분들의 이야기</em>
+    </h2>
+    <div class="testimonial-grid">
+      <div class="testimonial-card reveal reveal-delay-1">
+        <div class="testimonial-tag">HIFU + SDM 4주 사용</div>
+        <div class="testimonial-stars">★★★★★</div>
+        <p class="testimonial-text">
+          피부과 리프팅을 3년째 받던 중 BTF를 써보게 됐는데, 
+          <strong>4주 지난 시점에 지인한테서 먼저 "얼굴이 달라졌다"는 말을 들었습니다.</strong> 
+          클리닉 효과가 이렇게 빨리 사라졌던 게 사실인데, 매일 쓰니까 유지가 되는 것 같아요.
+        </p>
+        <div class="testimonial-author">K.J.M · 42세 직장인</div>
+      </div>
+      <div class="testimonial-card reveal reveal-delay-2">
+        <div class="testimonial-tag">쇼룸 방문 · 직접 측정</div>
+        <div class="testimonial-stars">★★★★★</div>
+        <p class="testimonial-text">
+          압구정 쇼룸에서 직접 피부 측정을 받고 1회 사용 전후를 비교했는데 
+          <strong>수치 변화가 눈에 보여서 결정했어요.</strong> 
+          가격이 부담되지 않았다면 거짓말이지만, 카트리지 교체 없다는 점에서 결국 이게 더 합리적이더라구요.
+        </p>
+        <div class="testimonial-author">P.S.Y · 38세 프리랜서</div>
+      </div>
+      <div class="testimonial-card reveal reveal-delay-3">
+        <div class="testimonial-tag">해외 거주 구매</div>
+        <div class="testimonial-stars">★★★★★</div>
+        <p class="testimonial-text">
+          일본 거주 중인데 한국에서 구매해서 가져왔습니다. 
+          <strong>주변 클리닉 가격이 한국보다 훨씬 비싼데, 집에서 관리할 수 있다는 게 큰 장점.</strong> 
+          CE 인증이 있어서 해외 사용도 걱정 없었어요.
+        </p>
+        <div class="testimonial-author">L.H.J · 45세 해외 거주자</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PRICE / PURCHASE -->
+<section class="price-section" id="purchase">
+  <div class="container">
+    <div class="section-label reveal" style="display:inline-block">Investment</div>
+    <h2 class="section-title reveal reveal-delay-1">
+      클리닉 연간 비용 대비<br><em>단 한 번의 투자</em>
+    </h2>
+    <div class="price-anchor reveal reveal-delay-2">
+      <div class="price-box">
+        <div class="price-type">피부과 리프팅</div>
+        <div class="price-amount"><small>연간 최대</small><br>600<small>만원</small></div>
+        <div class="price-sub">1회 50~150만원 × 연 2~4회</div>
+        <div class="price-sub" style="color:var(--muted);font-size:11px;margin-top:8px">
+          + 예약·이동 시간 + 유지 기간 한계
+        </div>
+      </div>
+      <div class="price-box featured">
+        <div class="price-type">BTF Ultrasonic Duo</div>
+        <div class="price-amount">180<small>만원</small></div>
+        <div class="price-sub">단 1회 투자 · 추가비용 없음</div>
+        <div class="price-sub" style="color:var(--gold);font-size:11px;margin-top:8px">
+          카트리지 교체 0원 · 매일 사용 가능
+        </div>
+      </div>
+    </div>
+    <div class="price-cta-wrap reveal">
+      <a href="https://thebtf.co.kr/product/detail.html?product_no=9&cate_no=42&display_group=1" target="_blank" class="btn-primary" style="display:inline-flex;font-size:14px;padding:20px 56px">
+        BTF 공식몰에서 구매하기
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+          <path d="M3 8h10M8 3l5 5-5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+        </svg>
+      </a>
+      <p class="price-note">
+        무료 배송 · 구매 후 AS 지원 · 압구정 쇼룸 방문 상담 가능<br>
+        쇼룸 방문 시 피부 측정 및 1:1 사용 교육 제공
+      </p>
+    </div>
+    <div class="cert-badge reveal">
+      <span>CE</span> CERTIFIED · LR5001225061 · MADE IN KOREA
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="faq-section" id="faq">
+  <div class="container">
+    <div class="section-label reveal" style="display:inline-block">FAQ</div>
+    <h2 class="section-title reveal reveal-delay-1" style="text-align:center">
+      자주 묻는 질문들
+    </h2>
+    <div class="faq-list reveal reveal-delay-2">
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)">
+          가격이 높은데, 그만한 가치가 있나요?
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">
+            피부과 리프팅 시술 1회 비용(50~150만원)을 연간 2~4회 받는다면, 단 1년 만에 BTF 구매 비용과 동일해집니다. 
+            BTF는 추가 카트리지 비용이 없는 반영구 설계입니다. 장기적으로 보면 오히려 경제적이며, 
+            매일 케어가 가능해 클리닉 방문 사이의 공백도 없애줍니다.
+          </div>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)">
+          클리닉 장비와 실제로 같은 원리인가요?
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">
+            HIFU(고강도 집중초음파)와 SDM 초음파는 클리닉에서 사용하는 원리와 동일합니다. 
+            다만 홈케어 환경에 최적화된 출력으로 조정되어 있어, 안전하게 매일 사용할 수 있습니다. 
+            CE 유럽 안전인증(LR5001225061)을 획득한 제품으로, 안전성은 국제 기준으로 검증되었습니다.
+          </div>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)">
+          카트리지 교체가 필요 없다는 게 사실인가요?
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">
+            맞습니다. BTF Ultrasonic Duo는 반영구 설계로, 별도 카트리지 구매가 필요하지 않습니다. 
+            일부 경쟁 제품은 6~12개월 주기로 카트리지를 교체해야 해 추가 비용이 지속 발생하지만, 
+            BTF는 초기 구매 이후 추가 비용이 없습니다.
+          </div>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)">
+          처음 사용하는데 혼자서도 잘 쓸 수 있을까요?
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">
+            압구정 쇼룸을 방문하시면 1:1 사용 교육과 피부 측정을 무료로 제공해드립니다. 
+            구매 후에도 CS 센터(02-512-7778)를 통한 지속적인 AS를 지원합니다.
+            또한 제품 구매 시 상세한 사용 가이드가 포함되어 있습니다.
+          </div>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)">
+          효과가 바로 느껴지나요?
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">
+            인체적용시험 결과, 단 1회 사용 후 탄력 31.13%·광채 37.18% 개선이 확인되었습니다. 
+            많은 사용자가 1회 후 피부 결과 윤기의 즉각적인 변화를 경험하고 있습니다. 
+            다만 HIFU의 콜라겐 재생 효과는 4~8주 지속 사용 후 더 뚜렷하게 나타납니다.
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FINAL CTA -->
+<section class="cta-section">
+  <div style="position:relative;z-index:1">
+    <p class="cta-eyebrow">피부 주권을 되찾을 시간</p>
+    <h2 class="cta-headline">
+      매일 10분으로<br><em>10년을 지키세요.</em>
+    </h2>
+    <p class="cta-sub">
+      BTF Ultrasonic Duo — 클리닉의 기술을 집으로.<br>
+      지금 바로 시작하세요.
+    </p>
+    <div class="cta-price-display">
+      <strong>₩1,800,000</strong> · 무료 배송 · 카트리지 교체 없음
+    </div>
+    <a href="https://thebtf.co.kr/product/detail.html?product_no=9&cate_no=42&display_group=1" target="_blank" class="btn-primary" style="font-size:14px;padding:20px 64px">
+      지금 구매하기
+      <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+        <path d="M3 8h10M8 3l5 5-5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+      </svg>
+    </a>
+    <div class="cta-trust">
+      <div class="trust-item"><div class="trust-dot"></div>무료 배송</div>
+      <div class="trust-item"><div class="trust-dot"></div>CE 안전인증</div>
+      <div class="trust-item"><div class="trust-dot"></div>국내 자체 제조</div>
+      <div class="trust-item"><div class="trust-dot"></div>쇼룸 방문 상담</div>
+      <div class="trust-item"><div class="trust-dot"></div>AS 지원</div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div>
+      <div class="footer-logo">BTF</div>
+      <div class="footer-tagline">Beauty That Fills</div>
+    </div>
+    <div class="footer-info">
+      <strong style="color:var(--cream-dim)">비티에프(BTF)</strong><br>
+      압구정 쇼룸 운영 중 · 방문 상담 환영<br>
+      CS: 02-512-7778 (평일 10:00 ~ 17:00)<br>
+      thebtf.co.kr
+    </div>
+    <div class="footer-info">
+      <a href="https://thebtf.co.kr" style="color:var(--gold);text-decoration:none;font-family:Montserrat,sans-serif;font-size:11px;letter-spacing:0.1em">공식몰 바로가기 →</a><br><br>
+      Naver Smart Store<br>
+      CE 인증 LR5001225061<br>
+      MADE IN KOREA
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2025 BTF (Beauty That Fills). All rights reserved.</span>
+    <span>본 제품은 의료기기가 아닙니다. 개인에 따라 효과 차이가 있을 수 있습니다.</span>
+  </div>
+</footer>
+
+<!-- STICKY MOBILE CTA -->
+<div class="sticky-cta">
+  <div class="sticky-price">₩1,800,000</div>
+  <a href="https://thebtf.co.kr/product/detail.html?product_no=9&cate_no=42&display_group=1" target="_blank" class="sticky-btn">구매하기</a>
+</div>
+
+<script>
+  // Tab switching
+  function switchTab(tab) {
+    document.querySelectorAll('.tech-tab').forEach(t => t.classList.remove('active'));
+    document.querySelectorAll('.tech-content').forEach(c => c.classList.remove('active'));
+    document.querySelector(`[onclick="switchTab('${tab}')"]`).classList.add('active');
+    document.getElementById(`tab-${tab}`).classList.add('active');
+  }
+
+  // FAQ
+  function toggleFaq(btn) {
+    const item = btn.closest('.faq-item');
+    const isOpen = item.classList.contains('open');
+    document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
+    if (!isOpen) item.classList.add('open');
+  }
+
+  // Scroll reveal
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); } });
+  }, { threshold: 0.12 });
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+  // Counter animation
+  function animateCount(el, target, decimals, duration) {
+    let start = 0;
+    const step = (timestamp) => {
+      if (!start) start = timestamp;
+      const progress = Math.min((timestamp - start) / duration, 1);
+      const eased = 1 - Math.pow(1 - progress, 3);
+      el.textContent = (eased * target).toFixed(decimals);
+      if (progress < 1) requestAnimationFrame(step);
+    };
+    requestAnimationFrame(step);
+  }
+  const countObserver = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        const target = parseFloat(e.target.dataset.target);
+        const decimals = target % 1 !== 0 ? 2 : 0;
+        animateCount(e.target, target, decimals, 1800);
+        countObserver.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.5 });
+  document.querySelectorAll('[data-target]').forEach(el => countObserver.observe(el));
+</script>
+</body>
+</html>
