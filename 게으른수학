@@ -1,0 +1,791 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>게으른수학 | 압구정 수학전문 교습소</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@300;400;600;700&family=Noto+Sans+KR:wght@300;400;500;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy: #0d1b2a;
+    --deep: #1b2e45;
+    --gold: #c9a84c;
+    --gold-light: #e8c97a;
+    --cream: #f7f3ec;
+    --warm: #f0e8d8;
+    --text: #1a1a2e;
+    --muted: #6b7280;
+    --white: #ffffff;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Noto Sans KR', sans-serif;
+    background: var(--cream);
+    color: var(--text);
+    overflow-x: hidden;
+  }
+
+  /* HERO */
+  .hero {
+    min-height: 100vh;
+    background: var(--navy);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 60px 24px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero::before {
+    content: '';
+    position: absolute;
+    width: 600px; height: 600px;
+    background: radial-gradient(circle, rgba(201,168,76,0.12) 0%, transparent 70%);
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+    pointer-events: none;
+  }
+
+  .hero-badge {
+    display: inline-block;
+    border: 1px solid rgba(201,168,76,0.5);
+    color: var(--gold);
+    font-size: 12px;
+    letter-spacing: 3px;
+    padding: 8px 20px;
+    border-radius: 100px;
+    margin-bottom: 40px;
+    font-family: 'Noto Sans KR', sans-serif;
+    font-weight: 500;
+    animation: fadeUp 0.8s ease both;
+  }
+
+  .hero h1 {
+    font-family: 'Noto Serif KR', serif;
+    font-size: clamp(28px, 6vw, 52px);
+    color: var(--white);
+    line-height: 1.4;
+    margin-bottom: 24px;
+    font-weight: 600;
+    animation: fadeUp 0.8s 0.15s ease both;
+  }
+
+  .hero h1 em {
+    color: var(--gold);
+    font-style: normal;
+  }
+
+  .hero-sub {
+    font-size: clamp(15px, 2.5vw, 18px);
+    color: rgba(255,255,255,0.6);
+    line-height: 1.8;
+    max-width: 500px;
+    margin-bottom: 50px;
+    animation: fadeUp 0.8s 0.3s ease both;
+  }
+
+  .hero-cta {
+    display: inline-block;
+    background: var(--gold);
+    color: var(--navy);
+    font-weight: 700;
+    font-size: 16px;
+    padding: 18px 44px;
+    border-radius: 4px;
+    text-decoration: none;
+    letter-spacing: 0.5px;
+    transition: all 0.3s;
+    animation: fadeUp 0.8s 0.45s ease both;
+  }
+
+  .hero-cta:hover {
+    background: var(--gold-light);
+    transform: translateY(-2px);
+    box-shadow: 0 12px 40px rgba(201,168,76,0.3);
+  }
+
+  .hero-scroll {
+    position: absolute;
+    bottom: 32px;
+    left: 50%;
+    transform: translateX(-50%);
+    color: rgba(255,255,255,0.3);
+    font-size: 12px;
+    letter-spacing: 2px;
+    animation: bounce 2s infinite;
+  }
+
+  /* STAT BAR */
+  .stat-bar {
+    background: var(--gold);
+    padding: 20px 24px;
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    flex-wrap: wrap;
+  }
+
+  .stat-item {
+    text-align: center;
+    color: var(--navy);
+  }
+
+  .stat-num {
+    font-family: 'Noto Serif KR', serif;
+    font-size: 26px;
+    font-weight: 700;
+    display: block;
+  }
+
+  .stat-label {
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 1px;
+    opacity: 0.8;
+  }
+
+  /* SECTION BASE */
+  section {
+    padding: 90px 24px;
+    max-width: 720px;
+    margin: 0 auto;
+  }
+
+  .section-label {
+    font-size: 11px;
+    letter-spacing: 3px;
+    color: var(--gold);
+    font-weight: 700;
+    text-transform: uppercase;
+    margin-bottom: 16px;
+    display: block;
+  }
+
+  h2 {
+    font-family: 'Noto Serif KR', serif;
+    font-size: clamp(22px, 4vw, 34px);
+    line-height: 1.45;
+    margin-bottom: 28px;
+    color: var(--navy);
+    font-weight: 600;
+  }
+
+  p {
+    font-size: 16px;
+    line-height: 1.9;
+    color: #3a3a4a;
+    margin-bottom: 20px;
+  }
+
+  /* STORY DIVIDER */
+  .divider {
+    width: 40px;
+    height: 2px;
+    background: var(--gold);
+    margin: 0 auto 60px;
+  }
+
+  /* STORY SECTION */
+  .story-section {
+    background: var(--white);
+    padding: 0;
+    max-width: 100%;
+  }
+
+  .story-inner {
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 90px 24px;
+  }
+
+  /* HIGHLIGHT BOX */
+  .highlight {
+    background: var(--navy);
+    border-left: 4px solid var(--gold);
+    padding: 28px 32px;
+    border-radius: 0 8px 8px 0;
+    margin: 36px 0;
+  }
+
+  .highlight p {
+    color: var(--cream);
+    font-family: 'Noto Serif KR', serif;
+    font-size: 18px;
+    line-height: 1.8;
+    margin: 0;
+    font-style: italic;
+  }
+
+  /* DATA CARD */
+  .data-card {
+    background: var(--navy);
+    border-radius: 12px;
+    padding: 44px 40px;
+    text-align: center;
+    margin: 48px 0;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .data-card::before {
+    content: '';
+    position: absolute;
+    top: -60px; right: -60px;
+    width: 200px; height: 200px;
+    background: radial-gradient(circle, rgba(201,168,76,0.15) 0%, transparent 70%);
+  }
+
+  .data-num {
+    font-family: 'Noto Serif KR', serif;
+    font-size: 72px;
+    font-weight: 700;
+    color: var(--gold);
+    line-height: 1;
+    display: block;
+    margin-bottom: 12px;
+  }
+
+  .data-desc {
+    color: rgba(255,255,255,0.75);
+    font-size: 16px;
+    line-height: 1.7;
+    margin: 0;
+  }
+
+  .data-desc strong {
+    color: var(--white);
+  }
+
+  /* DIFFERENCE SECTION */
+  .diff-section {
+    background: var(--warm);
+    max-width: 100%;
+    padding: 0;
+  }
+
+  .diff-inner {
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 90px 24px;
+  }
+
+  .diff-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    margin-top: 40px;
+  }
+
+  .diff-box {
+    background: var(--white);
+    border-radius: 10px;
+    padding: 28px 24px;
+  }
+
+  .diff-box.highlight-box {
+    background: var(--navy);
+  }
+
+  .diff-tag {
+    font-size: 10px;
+    letter-spacing: 2px;
+    font-weight: 700;
+    padding: 4px 12px;
+    border-radius: 100px;
+    display: inline-block;
+    margin-bottom: 16px;
+  }
+
+  .diff-box .diff-tag { background: #eee; color: var(--muted); }
+  .diff-box.highlight-box .diff-tag { background: var(--gold); color: var(--navy); }
+
+  .diff-box ul {
+    list-style: none;
+    padding: 0;
+  }
+
+  .diff-box ul li {
+    font-size: 14px;
+    color: var(--muted);
+    padding: 7px 0;
+    border-bottom: 1px solid #f0f0f0;
+    line-height: 1.5;
+  }
+
+  .diff-box ul li:last-child { border-bottom: none; }
+
+  .diff-box.highlight-box ul li {
+    color: rgba(255,255,255,0.85);
+    border-bottom-color: rgba(255,255,255,0.08);
+  }
+
+  .diff-box.highlight-box ul li::before {
+    content: '✓ ';
+    color: var(--gold);
+    font-weight: 700;
+  }
+
+  /* COURSE */
+  .course-card {
+    border: 1px solid #e8e0d0;
+    border-radius: 10px;
+    padding: 32px 28px;
+    margin-bottom: 16px;
+    background: var(--white);
+    transition: all 0.3s;
+  }
+
+  .course-card:hover {
+    border-color: var(--gold);
+    box-shadow: 0 4px 24px rgba(201,168,76,0.12);
+  }
+
+  .course-grade {
+    font-size: 11px;
+    letter-spacing: 2px;
+    color: var(--gold);
+    font-weight: 700;
+    margin-bottom: 10px;
+    display: block;
+  }
+
+  .course-title {
+    font-family: 'Noto Serif KR', serif;
+    font-size: 20px;
+    color: var(--navy);
+    margin-bottom: 12px;
+    font-weight: 600;
+  }
+
+  .course-desc {
+    font-size: 14px;
+    color: var(--muted);
+    line-height: 1.7;
+    margin: 0;
+  }
+
+  /* FOR WHOM */
+  .whom-list {
+    list-style: none;
+    padding: 0;
+    margin-top: 36px;
+  }
+
+  .whom-list li {
+    display: flex;
+    align-items: flex-start;
+    gap: 16px;
+    padding: 20px 0;
+    border-bottom: 1px solid #e8e0d0;
+    font-size: 16px;
+    color: #3a3a4a;
+    line-height: 1.7;
+  }
+
+  .whom-list li:last-child { border-bottom: none; }
+
+  .whom-icon {
+    width: 36px;
+    height: 36px;
+    background: var(--navy);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    color: var(--gold);
+    font-size: 16px;
+    margin-top: 2px;
+  }
+
+  /* PROCESS */
+  .process-section {
+    background: var(--navy);
+    max-width: 100%;
+    padding: 0;
+  }
+
+  .process-inner {
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 90px 24px;
+  }
+
+  .process-inner h2 { color: var(--white); }
+  .process-inner .section-label { color: var(--gold); }
+
+  .process-steps {
+    margin-top: 48px;
+    position: relative;
+  }
+
+  .step {
+    display: flex;
+    gap: 24px;
+    margin-bottom: 40px;
+    align-items: flex-start;
+  }
+
+  .step-num {
+    width: 44px;
+    height: 44px;
+    border: 1.5px solid var(--gold);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Noto Serif KR', serif;
+    font-size: 18px;
+    color: var(--gold);
+    flex-shrink: 0;
+  }
+
+  .step-content h3 {
+    font-family: 'Noto Serif KR', serif;
+    color: var(--white);
+    font-size: 18px;
+    margin-bottom: 8px;
+    font-weight: 600;
+  }
+
+  .step-content p {
+    color: rgba(255,255,255,0.55);
+    font-size: 14px;
+    margin: 0;
+    line-height: 1.7;
+  }
+
+  /* CTA SECTION */
+  .cta-section {
+    background: var(--gold);
+    max-width: 100%;
+    padding: 0;
+    text-align: center;
+  }
+
+  .cta-inner {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 90px 24px;
+  }
+
+  .cta-inner h2 {
+    color: var(--navy);
+    font-size: clamp(24px, 4vw, 38px);
+    margin-bottom: 16px;
+  }
+
+  .cta-inner p {
+    color: rgba(13,27,42,0.7);
+    font-size: 16px;
+    margin-bottom: 40px;
+  }
+
+  .cta-btn {
+    display: inline-block;
+    background: var(--navy);
+    color: var(--white);
+    font-weight: 700;
+    font-size: 17px;
+    padding: 20px 52px;
+    border-radius: 4px;
+    text-decoration: none;
+    letter-spacing: 0.5px;
+    transition: all 0.3s;
+    box-shadow: 0 8px 32px rgba(13,27,42,0.2);
+  }
+
+  .cta-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 16px 48px rgba(13,27,42,0.3);
+  }
+
+  .cta-note {
+    margin-top: 20px;
+    font-size: 13px;
+    color: rgba(13,27,42,0.5);
+    margin-bottom: 0;
+  }
+
+  /* FOOTER */
+  footer {
+    background: #080f18;
+    padding: 40px 24px;
+    text-align: center;
+    color: rgba(255,255,255,0.3);
+    font-size: 13px;
+    line-height: 1.8;
+  }
+
+  footer a { color: var(--gold); text-decoration: none; }
+
+  /* ANIMATIONS */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(24px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  @keyframes bounce {
+    0%, 100% { transform: translateX(-50%) translateY(0); }
+    50% { transform: translateX(-50%) translateY(8px); }
+  }
+
+  .reveal {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+  }
+
+  .reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  @media (max-width: 600px) {
+    .diff-grid { grid-template-columns: 1fr; }
+    .stat-bar { gap: 24px; }
+    .data-num { font-size: 56px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- HERO -->
+<div class="hero">
+  <span class="hero-badge">압구정 수학전문 교습소</span>
+  <h1>
+    열심히 하는데<br>
+    왜 우리 아이만<br>
+    <em>시간이 부족할까요?</em>
+  </h1>
+  <p class="hero-sub">
+    문제가 많아서가 아닙니다.<br>
+    푸는 방식이 처음부터 다르게 설계되어 있기 때문입니다.
+  </p>
+  <a href="https://map.naver.com/p/entry/place/1550355953?placePath=/home?entry=plt&from=map&fromPanelNum=1&additionalHeight=76&timestamp=202605272127&locale=ko&svcName=map_pcv5&searchType=place&lng=127.0208277&lat=37.5217563&c=15.00,0,0,0,dh" target="_blank" class="hero-cta">
+    무료 진단 상담 예약하기
+  </a>
+  <div class="hero-scroll">↓ SCROLL</div>
+</div>
+
+<!-- STAT BAR -->
+<div class="stat-bar">
+  <div class="stat-item">
+    <span class="stat-num">3배</span>
+    <span class="stat-label">연산 속도 차이</span>
+  </div>
+  <div class="stat-item">
+    <span class="stat-num">초·중·고</span>
+    <span class="stat-label">전 학년 전문</span>
+  </div>
+  <div class="stat-item">
+    <span class="stat-num">압구정</span>
+    <span class="stat-label">강남구 소재</span>
+  </div>
+  <div class="stat-item">
+    <span class="stat-num">무료</span>
+    <span class="stat-label">첫 진단 상담</span>
+  </div>
+</div>
+
+<!-- STORY 1 -->
+<div class="story-section">
+  <div class="story-inner">
+    <span class="section-label reveal">STORY</span>
+    <h2 class="reveal">한 어머니의<br>전화가 있었습니다</h2>
+    <div class="divider reveal"></div>
+
+    <p class="reveal">"선생님, 우리 아이가 수학학원을 3군데나 옮겼는데 왜 이렇게 느린 건가요? 문제를 못 푸는 게 아니에요. 시간이 항상 부족해요."</p>
+
+    <p class="reveal">아이를 직접 만나보니 금방 보였습니다. 답은 맞히고 있었지만, 식을 세우는 방향이 처음부터 비효율적으로 굳어 있었습니다. 3년 동안 그렇게 풀어왔으니 당연한 결과였습니다.</p>
+
+    <div class="highlight reveal">
+      <p>"수학은 양이 아니라 설계입니다. 틀린 방식으로 10,000문제를 풀어도 빨라지지 않습니다."</p>
+    </div>
+
+    <p class="reveal">그 아이는 6주 뒤, 같은 시험에서 15분이 남았습니다. 문제가 쉬워진 게 아닙니다. 푸는 방식이 바뀐 것입니다.</p>
+  </div>
+</div>
+
+<!-- DATA -->
+<section>
+  <span class="section-label reveal">RESULT</span>
+  <h2 class="reveal">숫자가 말해주는<br>게으른수학의 차이</h2>
+
+  <div class="data-card reveal">
+    <span class="data-num">3배</span>
+    <p class="data-desc">
+      연산 비교 평가에서<br>
+      <strong>게으른수학 초등 2학년</strong>이<br>
+      외부 <strong>초등 5학년 최상위권</strong>보다<br>
+      평균 연산 속도가 약 3배 빠르게 나왔습니다.
+    </p>
+  </div>
+
+  <p class="reveal">더 많이 풀어서가 아닙니다. 연산을 설계하는 방식 자체가 다르기 때문입니다. 이 차이는 초등에서 그치지 않고 중학교, 고등학교까지 그대로 이어집니다.</p>
+</section>
+
+<!-- DIFFERENCE -->
+<div class="diff-section">
+  <div class="diff-inner">
+    <span class="section-label reveal">WHY</span>
+    <h2 class="reveal">일반 학원과<br>무엇이 다른가요?</h2>
+
+    <div class="diff-grid">
+      <div class="diff-box reveal">
+        <span class="diff-tag">일반 수학학원</span>
+        <ul>
+          <li>개념 → 예제 → 문제집 반복</li>
+          <li>정답 여부만 확인하고 넘어감</li>
+          <li>풀이 방향은 학생에게 맡김</li>
+          <li>많이 풀수록 좋다는 방식</li>
+          <li>속도는 알아서 빨라지길 기대</li>
+        </ul>
+      </div>
+      <div class="diff-box highlight-box reveal">
+        <span class="diff-tag">게으른수학</span>
+        <ul>
+          <li>식을 설계하는 방향부터 교정</li>
+          <li>"왜 그렇게 풀었어?"를 반드시 물음</li>
+          <li>연산 방식과 풀이 습관을 재설계</li>
+          <li>적게 풀고 빠르게 푸는 구조 형성</li>
+          <li>초등부터 수능까지 연결되는 습관</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- COURSES -->
+<section>
+  <span class="section-label reveal">CURRICULUM</span>
+  <h2 class="reveal">초등부터 고등까지<br>연결되는 커리큘럼</h2>
+
+  <div class="course-card reveal">
+    <span class="course-grade">초등 과정</span>
+    <div class="course-title">연산 속도 × 식 설계 습관 형성</div>
+    <p class="course-desc">가로셈, 좌측 연산, 암산 중심으로 빠르고 정확한 계산 능력을 만듭니다. 이 시기에 잡힌 습관이 중·고등 수학 전체 효율을 결정합니다.</p>
+  </div>
+
+  <div class="course-card reveal">
+    <span class="course-grade">중등 과정</span>
+    <div class="course-title">빠른 풀이법 + 내신 대비 시스템</div>
+    <p class="course-desc">중2-1 쎈 중상급 문제를 빠른 풀이법으로 접근합니다. 시중 교재에 없는 핵심 이론과 내신 대비 메모 습관을 함께 형성합니다.</p>
+  </div>
+
+  <div class="course-card reveal">
+    <span class="course-grade">고등 과정</span>
+    <div class="course-title">공통수학 기초반 / 중상급반</div>
+    <p class="course-desc">레벨 테스트 후 맞춤 배정합니다. 내신·모의고사·수능까지 이어지는 풀이 속도와 습관을 고등 첫 단계부터 올바르게 잡습니다.</p>
+  </div>
+</section>
+
+<!-- FOR WHOM -->
+<div class="story-section">
+  <div class="story-inner">
+    <span class="section-label reveal">FOR WHOM</span>
+    <h2 class="reveal">이런 아이라면<br>꼭 한 번 오세요</h2>
+
+    <ul class="whom-list">
+      <li class="reveal">
+        <div class="whom-icon">✓</div>
+        <span>열심히 하는데 시험장에서 항상 시간이 부족한 아이</span>
+      </li>
+      <li class="reveal">
+        <div class="whom-icon">✓</div>
+        <span>문제집은 풀었는데 응용 문제에서 막히는 아이</span>
+      </li>
+      <li class="reveal">
+        <div class="whom-icon">✓</div>
+        <span>연산은 되는데 식 세우는 방향을 어려워하는 아이</span>
+      </li>
+      <li class="reveal">
+        <div class="whom-icon">✓</div>
+        <span>고등 올라가기 전에 수학 뿌리부터 제대로 잡고 싶은 아이</span>
+      </li>
+      <li class="reveal">
+        <div class="whom-icon">✓</div>
+        <span>학원을 여러 군데 다녔지만 실질적인 변화가 없었던 아이</span>
+      </li>
+    </ul>
+  </div>
+</div>
+
+<!-- PROCESS -->
+<div class="process-section">
+  <div class="process-inner">
+    <span class="section-label reveal">PROCESS</span>
+    <h2 class="reveal">상담부터 수업까지<br>이렇게 진행됩니다</h2>
+
+    <div class="process-steps">
+      <div class="step reveal">
+        <div class="step-num">1</div>
+        <div class="step-content">
+          <h3>무료 진단 상담 예약</h3>
+          <p>네이버 예약 또는 카카오톡으로 간편하게 예약합니다. 학년과 현재 사용 교재를 미리 알려주시면 더 정확한 진단이 가능합니다.</p>
+        </div>
+      </div>
+      <div class="step reveal">
+        <div class="step-num">2</div>
+        <div class="step-content">
+          <h3>1:1 진단 + 설명회 (약 50분)</h3>
+          <p>학생의 풀이 방식을 직접 확인하고, 어느 지점에서 속도가 막히는지 정확히 짚어드립니다. 게으른수학의 수업 방식도 직접 체험하실 수 있습니다.</p>
+        </div>
+      </div>
+      <div class="step reveal">
+        <div class="step-num">3</div>
+        <div class="step-content">
+          <h3>레벨 배정 후 수업 시작</h3>
+          <p>진단 결과를 바탕으로 맞는 반에 배정됩니다. 충분히 이해하신 후 등록 여부를 결정하셔도 됩니다. 부담은 없습니다.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- CTA -->
+<div class="cta-section">
+  <div class="cta-inner">
+    <h2>우리 아이 수학,<br>지금 확인해보세요</h2>
+    <p>진단 상담은 무료입니다. 오셔서 직접 확인해보시고 결정하셔도 됩니다.</p>
+    <a href="https://map.naver.com/p/entry/place/1550355953?placePath=/home?entry=plt&from=map&fromPanelNum=1&additionalHeight=76&timestamp=202605272127&locale=ko&svcName=map_pcv5&searchType=place&lng=127.0208277&lat=37.5217563&c=15.00,0,0,0,dh" target="_blank" class="cta-btn">
+      네이버 예약으로 바로 가기
+    </a>
+    <p class="cta-note">📍 서울 강남구 압구정 | 초등 · 중등 · 고등 수학 전문</p>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <p><strong style="color:rgba(255,255,255,0.6)">게으른수학</strong></p>
+  <p>서울 강남구 압구정 | 초등 · 중등 · 고등 수학 전문 교습소</p>
+  <p style="margin-top:12px">
+    <a href="https://map.naver.com/p/entry/place/1550355953?placePath=/home?entry=plt&from=map&fromPanelNum=1&additionalHeight=76&timestamp=202605272127&locale=ko&svcName=map_pcv5&searchType=place&lng=127.0208277&lat=37.5217563&c=15.00,0,0,0,dh" target="_blank">네이버 지도 바로가기</a>
+  </p>
+</footer>
+
+<script>
+  // Scroll reveal
+  const reveals = document.querySelectorAll('.reveal');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry, i) => {
+      if (entry.isIntersecting) {
+        setTimeout(() => entry.target.classList.add('visible'), i * 80);
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+
+  reveals.forEach(el => observer.observe(el));
+</script>
+
+</body>
+</html>
